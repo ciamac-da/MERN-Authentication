@@ -14,15 +14,14 @@ app.use(
       })
 )
 
-mongoose
-.connect(
-      process.env.MongoURL, { 
+mongoose.connect(process.env.mongoURI, { 
             useNewUrlParser:    true,
             useCreateIndex:     true,
             useUnifiedTopology: true
           })
 .then(() => console.log("MongoDB connected!"))
 .catch(err => console.log(err))
+
 
 const Users = require("./routes/Users")
 

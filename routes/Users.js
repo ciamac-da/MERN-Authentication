@@ -11,7 +11,7 @@ users.use(cors())
 process.env.SECRET_KEY="secret"
 
 users.post("/register",(req,res) => {
-      const today = new Date(),
+      const today = new Date()
       const userData ={
             first_name : req.body.first_name,
             last_name: req.body.last_name,
@@ -30,8 +30,16 @@ User.findOne({
                   .then(user=>{
                         res.json({status:user.email + "registered!"})
                   })
+                  .catch(err=>{
+                        res.send("error" + err)
+                  })
             })
-      }
+      }else {
+            res.json({error:"User already exists!"})            
+                  }
 })
-
+.catch(err=>{
+      res.send("error:"+ err)
 })
+})
+module.exports = users
