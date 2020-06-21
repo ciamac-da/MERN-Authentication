@@ -1,4 +1,4 @@
-require('dotenv').config();
+//require('dotenv').config();
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
@@ -13,8 +13,9 @@ app.use(
             extended: false
       })
 )
+const mongoURI = "mongodb://localhost:27017/mern"
 
-mongoose.connect(process.env.mongoURI, { 
+mongoose.connect(mongoURI, { 
             useNewUrlParser:    true,
             useCreateIndex:     true,
             useUnifiedTopology: true
