@@ -3,12 +3,15 @@ import { Link, withRouter } from "react-router-dom";
 
 
 class Navbar extends Component {
- logOut(e) {
+ //Logout logic!
+ // using history.push we'll be redirect to main!
+      logOut(e) {
        e.preventDefault()
        localStorage.removeItem("usertoken")
        this.props.history.push("/")
  }      
  render(){
+       // Login and Register form!
        const loginRegLink = (
              <ul className="navbar-nav">
              <li className="nav-item">
@@ -23,7 +26,9 @@ class Navbar extends Component {
              </li>
              </ul>
        )
-
+       // After we successfully logged In we need user infos 
+       // and also redirecting to /profile
+       // We also have to defined Logout to redirecting to main page!
        const userLink = (
             <ul className="navbar-nav">
             <li className="nav-item">
@@ -65,6 +70,11 @@ class Navbar extends Component {
             </div>
             </nav>
       )
+       // {localStorage.usertoken ? userLink : loginRegLink}
+       // What does it mean? It means IF localStorage.usertoken founded then
+       // activate userLink otherwise gimme loginRegLink
+       // ACHTUNG => userLink function means successful redirecting to /profile
+       // ACHTUNG => loginRegLink function means back to login/register form!
  }
 }
 

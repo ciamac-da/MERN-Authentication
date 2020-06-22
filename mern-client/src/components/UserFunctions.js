@@ -1,5 +1,7 @@
 import axios from "axios";
 
+// registration logic 
+// we have to catch significantinfos of user like name email etc..
 export const register = newUser => {
       return axios
       .post("user/register", {
@@ -14,6 +16,7 @@ export const register = newUser => {
       })
 }
 
+// Login logic! comparing  
 export const login = user => {
       return axios
       .post("users/login", {
