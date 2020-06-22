@@ -4,7 +4,7 @@ import axios from "axios";
 // we have to catch significantinfos of user like name email etc..
 export const register = newUser => {
       return axios
-      .post("user/register", {
+      .post("users/register", {
             first_name: newUser.first_name,
             last_name: newUser.last_name,
             email: newUser.email,
