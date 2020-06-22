@@ -6,9 +6,9 @@ export const register = newUser => {
       return axios
       .post("user/register", {
             first_name: newUser.first_name,
-            last_name: nawUser.last_name,
-            email: nawUser.email,
-            password: nawUser.password,
+            last_name: newUser.last_name,
+            email: newUser.email,
+            password: newUser.password,
 
       })
       .then(res => {

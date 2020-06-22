@@ -11,3 +11,5 @@ class Landing extends Component {
             )
       }
 }
+
+export default Landing
