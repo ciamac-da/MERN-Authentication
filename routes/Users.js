@@ -49,7 +49,10 @@ users.post("/login", (req,res) =>{
       })
       .then(user =>{
             if(user){
-                  if(bcrypt.compareSync(req.body.password, user.password)) {
+                  const passwordValid = bcrypt.compareSync(req.body.password, user.password)
+                  console.log("password valider", passwordValid, req.body.password, user.password)
+
+                  if(passwordValid) {
                         const payload = {
                               _id: user._id,
                               first_name: user.first_name,
@@ -61,7 +64,7 @@ users.post("/login", (req,res) =>{
                         })
                         res.send(token)
                   }else {
-                        res.json({error: "User does not exists!"})
+                        res.json({error: "Wrong password!"})
                   }
             }else {
                   res.json({error: "User does not exists!"})
