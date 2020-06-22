@@ -72,5 +72,6 @@ render() {
             </div>
       )
 }
-
 }
+
+export default Login
