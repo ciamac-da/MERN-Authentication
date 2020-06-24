@@ -43,6 +43,13 @@ User.findOne({
 })
 })
 
+// Login route's logic!
+// First of all we catch email using findOne() method!
+// Then we've found the user we have to use becrypt and also comparing passwords
+// Passwords means the password from DataBank and th epassword that we write and submit to logging in!
+// Then if password was valid, we save it in payload and we catch important things of Schema in payload
+// we save the user in token using jwt and sign() method!
+// There should be also error function to get error if we had an error!
 users.post("/login", (req,res) =>{
       User.findOne({
             email: req.body.email
@@ -74,6 +81,9 @@ users.post("/login", (req,res) =>{
             res.send("error:" + err)
       })
 })
+// Time to define our /profile strategy 
+// We have to decode our user , whose Logged in successfuly!
+// For that we use jwt and verify() method and we define headers usein authorization that comes from cors
 users.get("/profile" , (req, res) => {
       var decoded = jwt.verify(req.headers["authorization"], process.env.SECRET_KEY)
       User.findOne({

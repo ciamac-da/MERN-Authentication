@@ -1,7 +1,34 @@
 import React, { Component } from "react";
 import jwt_decode from "jwt-decode";
+import { withStyles } from "@material-ui/core/styles";
+import Avatar from "@material-ui/core/Avatar";
+import { red } from "@material-ui/core/colors";
+import {
+  TableRow,
+  TableCell,
+  CardActionArea,
+  Card,
+  CardHeader,
+  CardMedia,
+  CardContent
+} from "@material-ui/core";
 
-class Profile extends Component {
+const useStyles = withStyles(theme => ({
+      root: {
+        maxWidth: 345
+      },
+      media: {
+        height: 0,
+        paddingTop: "56.25%" // 16:9
+      },
+      avatar: {
+        backgroundColor: red[500]
+      }
+    }));
+    
+
+
+export default  useStyles( class Profile extends Component {
       constructor() {
             super()
             this.state = {
@@ -21,32 +48,49 @@ class Profile extends Component {
             })
       }
       render() {
+            const classes = this.props
+
             return (
-                  <div className="container">
-                        <div className="jumbotron mt-5">
-                              <div className="col-sm-8 mx-auto">
-                                    <h1 className="text-center">Profile</h1>
-                              </div>
-                              <table className="table col-md-6 mx-auto">
-                              <tbody>
-                                    <tr>
-                                          <td>First Name</td>
-                                          <td>{this.state.first_name}</td>
-                                    </tr>
-                                    <tr>
-                                          <td>Last Name</td>
-                                          <td>{this.state.last_name}</td>
-                                    </tr>
-                                    <tr>
-                                          <td>Email</td>
-                                          <td>{this.state.email}</td>
-                                    </tr>
-                              </tbody>
-                              </table>
-                        </div>
-                  </div>
+                  <div align="center" style={{ marginTop: "5ch" }}>
+      <Card className={classes.root}>
+        <CardActionArea>
+          <CardHeader
+            align="center"
+            avatar={<Avatar aria-label="recipe" className={classes.avatar} />}
+            title="Willkommen {user}"
+            subheader="September 14, 2016"
+          />
+        </CardActionArea>
+
+        <CardActionArea>
+          <CardMedia className={classes.media} image="" title="user photo" />
+        </CardActionArea>
+
+        <CardActionArea>
+          <CardContent align="center">
+            <TableRow>
+              <TableCell color="textSecondary">Vorname:</TableCell>
+              <TableCell color="textSecondary">{this.state.first_name}</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell color="textSecondary">Nachname:</TableCell>
+              <TableCell color="textSecondary">{this.state.last_name}</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell color="textSecondary">Email:</TableCell>
+              <TableCell color="textSecondary">{this.state.email}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell color="textSecondary">Roles:</TableCell>
+              <TableCell color="textSecondary">player</TableCell>
+            </TableRow>
+          </CardContent>
+        </CardActionArea>
+      </Card>
+    </div>
             )
       }
 }
-
-export default Profile
+)
