@@ -1,5 +1,7 @@
 import React, {Component} from "react";
 import {register} from "./UserFunctions";
+import { Link } from "react-router-dom";
+
 
 class Register extends Component {
       constructor(){
@@ -38,7 +40,7 @@ render() {
                   <div className="row">
                         <div className="col-md-6 mt-5 mx-auto">
                               <form noValidate onSubmit={this.onSubmit}>
-                              <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
+                              <h1 className="h3 mb-3 font-weight-normal">Please sign up</h1>
                               <div className="form-group">
                               <label htmlFor="first_name">First Name</label>
                               <input 
@@ -87,12 +89,16 @@ render() {
                               onChange={this.onChange}
                               />
                               </div>
+                              <Link
+                              to="/login"
+                              >
                               <button 
                               className="btn btn-lg btn-primary btn-block"
                               type="submit"
                               >
                                     Register
                               </button>
+                              </Link>
                               </form>
                         </div>
                   </div>

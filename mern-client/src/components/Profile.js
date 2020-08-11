@@ -15,7 +15,8 @@ import {
 
 const useStyles = withStyles(theme => ({
       root: {
-        maxWidth: 345
+        maxWidth: 345,
+
       },
       media: {
         height: 0,
